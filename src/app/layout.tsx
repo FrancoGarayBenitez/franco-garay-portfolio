@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navigation from "@/components/Navigation";
+import { env } from "@/lib/config/env";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -11,6 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(env.siteUrl),
   title: "Juan Pérez - Desarrollador Full Stack",
   description:
     "Portfolio profesional de Juan Pérez. Desarrollador Full Stack especializado en React, Next.js, Node.js y TypeScript. Creando soluciones web innovadoras.",
@@ -27,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_ES",
-    url: "https://tu-dominio.com",
+    url: env.siteUrl,
     title: "Juan Pérez - Desarrollador Full Stack",
     description:
       "Portfolio profesional showcasing proyectos y habilidades en desarrollo web moderno",
