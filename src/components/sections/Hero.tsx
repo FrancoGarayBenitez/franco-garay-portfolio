@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 pt-16"
+      className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 pt-16"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -23,9 +23,15 @@ export default function Hero() {
                 Franco Garay
               </span>
             </h1>
-            <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-              Desarrollador Full Stack especializado en React, Node.js y
-              TypeScript
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-3 leading-relaxed font-medium">
+              Desarrollador Full Stack ·{" "}
+              <span className="text-blue-600 dark:text-blue-400">
+                Java · Spring Boot · React · TypeScript
+              </span>
+            </p>
+            <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 mb-8 leading-relaxed">
+              Técnico Universitario en Programación (UTN Mendoza) · Lic. en
+              Producción de Bioimágenes (UNC)
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <motion.button
@@ -41,7 +47,7 @@ export default function Hero() {
                 Ver Proyectos
               </motion.button>
               <motion.a
-                href="/cv.pdf"
+                href="/docs/cv_franco_garay.pdf"
                 download
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

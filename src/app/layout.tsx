@@ -13,41 +13,44 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.siteUrl),
-  title: "Juan Pérez - Desarrollador Full Stack",
+  title: "Franco Garay - Desarrollador Full Stack",
   description:
-    "Portfolio profesional de Juan Pérez. Desarrollador Full Stack especializado en React, Next.js, Node.js y TypeScript. Creando soluciones web innovadoras.",
+    "Portfolio profesional de Franco Garay. Desarrollador Full Stack especializado en Java, Spring Boot, React y TypeScript. Técnico Universitario en Programación (UTN Mendoza).",
   keywords: [
     "desarrollador",
     "full stack",
+    "java",
+    "spring boot",
     "react",
-    "nextjs",
     "typescript",
     "portfolio",
+    "mendoza",
+    "argentina",
   ],
-  authors: [{ name: "Juan Pérez" }],
-  creator: "Juan Pérez",
+  authors: [{ name: "Franco Garay" }],
+  creator: "Franco Garay",
   openGraph: {
     type: "website",
     locale: "es_ES",
     url: env.siteUrl,
-    title: "Juan Pérez - Desarrollador Full Stack",
+    title: "Franco Garay - Desarrollador Full Stack",
     description:
-      "Portfolio profesional showcasing proyectos y habilidades en desarrollo web moderno",
-    siteName: "Portfolio Juan Pérez",
+      "Portfolio profesional de Franco Garay. Proyectos y habilidades en desarrollo web con Java, Spring Boot, React y TypeScript.",
+    siteName: "Franco Garay Portfolio",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Juan Pérez Portfolio",
+        alt: "Franco Garay Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Juan Pérez - Desarrollador Full Stack",
-    description: "Portfolio profesional showcasing proyectos y habilidades",
-    creator: "@tu_usuario",
+    title: "Franco Garay - Desarrollador Full Stack",
+    description:
+      "Portfolio profesional de Franco Garay. Java · Spring Boot · React · TypeScript.",
     images: ["/og-image.jpg"],
   },
   robots: {

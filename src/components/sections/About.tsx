@@ -4,8 +4,9 @@ import { motion } from "framer-motion";
 import {
   Code2,
   Database,
-  Smartphone,
-  Globe,
+  Server,
+  HardDrive,
+  GitBranch,
   GraduationCap,
   Award,
   Calendar,
@@ -20,7 +21,7 @@ export default function About() {
     "Metodologías Ágiles",
     "Resolución de Problemas",
     "Trabajo en Equipo",
-    "Arquitectura de Software",
+    "Dominio del área de Salud",
   ];
 
   const timelineEvents = [
@@ -28,9 +29,11 @@ export default function About() {
       type: "cert",
       title: "Desarrollo Web",
       institution: "CoderHouse",
-      date: "2021",
+      date: "2022",
       description: "HTML, CSS y bases del desarrollo web moderno.",
       certificateUrl: "/docs/certificado-desarrollo-web.png",
+      status: undefined as string | undefined,
+      certificateDownloadUrl: null as string | null,
       featured: false,
     },
     {
@@ -40,33 +43,43 @@ export default function About() {
       date: "2022",
       description: "JavaScript ES6+, DOM y programación asíncrona.",
       certificateUrl: "/docs/certificado-javascript.png",
+      status: undefined as string | undefined,
+      certificateDownloadUrl: null as string | null,
       featured: false,
     },
     {
       type: "cert",
       title: "React.js",
       institution: "CoderHouse",
-      date: "2022",
+      date: "2023",
       description: "React, hooks y desarrollo de aplicaciones SPA.",
       certificateUrl: "/docs/certificado-react.png",
-      featured: false,
-    },
-    {
-      type: "study",
-      title: "Backend",
-      institution: "CoderHouse",
-      date: "2022",
-      description: "Node.js, Express y bases de datos (en proceso).",
-      certificateUrl: null,
+      status: undefined as string | undefined,
+      certificateDownloadUrl: null as string | null,
       featured: false,
     },
     {
       type: "edu",
-      title: "Graduación UTN",
-      institution: "UTN",
+      title: "Lic. Bioimágenes",
+      institution: "UNC",
       date: "2024",
-      description: "Tecnicatura Universitaria en Programación completada.",
-      certificateUrl: "/docs/constancia-tramite-utn.png",
+      description:
+        "Licenciatura en Producción de Bioimágenes. Especializado en Tomografía Computada.",
+      certificateUrl: null,
+      status: "✓ Título en mano" as string | undefined,
+      certificateDownloadUrl: "/docs/titulo_bioimagenes.jpeg" as string | null,
+      featured: false,
+    },
+    {
+      type: "edu",
+      title: "Técnico Programador",
+      institution: "UTN Mendoza",
+      date: "2025",
+      description:
+        "Tecnicatura Universitaria en Programación. Proyecto final: El Buen Sabor. Título en trámite.",
+      certificateUrl: "/docs/estadoAcadémicoUtn.pdf",
+      status: undefined as string | undefined,
+      certificateDownloadUrl: null as string | null,
       featured: true,
     },
   ];
@@ -75,34 +88,38 @@ export default function About() {
     {
       icon: <Code2 size={32} />,
       title: "Frontend",
-      tools: "React, Next.js, TS",
+      tools: "React · Next.js · TypeScript · Tailwind",
       color: "bg-blue-500",
     },
     {
-      icon: <Database size={32} />,
+      icon: <Server size={32} />,
       title: "Backend",
-      tools: "Node, Express, SQL",
+      tools: "Java · Spring Boot · Spring Security · JWT",
       color: "bg-green-500",
     },
     {
-      icon: <Smartphone size={32} />,
-      title: "Mobile",
-      tools: "React Native, Expo",
+      icon: <HardDrive size={32} />,
+      title: "Base de Datos",
+      tools: "MySQL · Hibernate JPA · Supabase",
       color: "bg-purple-500",
     },
     {
-      icon: <Globe size={32} />,
-      title: "DevOps",
-      tools: "Docker, Vercel, Git",
+      icon: <GitBranch size={32} />,
+      title: "Herramientas",
+      tools: "Git · GitHub · Vite · Gradle",
       color: "bg-orange-500",
     },
   ];
 
   const handleCertificateDownload = (url: string, title: string) => {
+    const ext = url.split(".").pop()?.toLowerCase() || "png";
+    if (ext === "pdf") {
+      window.open(url, "_blank", "noopener,noreferrer");
+      return;
+    }
     const link = document.createElement("a");
     link.href = url;
-    // Cambio la extensión a .png
-    link.download = `${title.toLowerCase().replace(/\s+/g, "-")}.png`;
+    link.download = `${title.toLowerCase().replace(/\s+/g, "-")}.${ext}`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -189,17 +206,27 @@ export default function About() {
               className="lg:col-span-2"
             >
               <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-6">
-                Mi trayectoria comenzó con la curiosidad de entender cómo se
-                construye la tecnología. Tras completar la carrera Full Stack en{" "}
-                <strong>CoderHouse</strong>, decidí profundizar mi formación
-                académica ingresando a la <strong>UTN</strong> para dominar las
-                bases de la ingeniería.
+                En 2024 me gradué como{" "}
+                <strong>Licenciado en Producción de Bioimágenes</strong> en la
+                UNC, especializado en Tomografía Computada. Ese mismo año, ya
+                con dos años de formación en programación encima, supe que
+                quería cruzar definitivamente al mundo del desarrollo de
+                software.
+              </p>
+              <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-6">
+                En <strong>2025</strong> completé la{" "}
+                <strong>
+                  Tecnicatura Universitaria en Programación (UTN Mendoza)
+                </strong>{" "}
+                con el sistema <em>El Buen Sabor</em> como proyecto final: una
+                plataforma gastronómica full stack con Spring Boot, React y
+                WebSocket. Ese perfil dual no es casualidad — uno de mis
+                proyectos, <strong>Radiología Mendoza</strong>, nació justamente
+                de conocer el área de salud desde adentro.
               </p>
               <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-8">
-                Hoy, combino la agilidad de los entornos modernos con el rigor
-                del análisis universitario. Mi objetivo es escribir{" "}
-                <strong>código escalable</strong> y aportar soluciones técnicas
-                sólidas en equipos de alto rendimiento.
+                Hoy estoy en búsqueda de mi primer empleo como desarrollador de
+                software.
               </p>
 
               <div className="flex flex-wrap gap-3">
@@ -224,13 +251,18 @@ export default function About() {
               <div className="bg-blue-500 p-4 rounded-full mb-4 shadow-inner">
                 <FileText size={40} className="text-white" />
               </div>
-              <h4 className="text-xl font-bold mb-2">Perfil Técnico</h4>
-              <p className="text-blue-100 text-sm mb-6 leading-relaxed">
-                Técnico Universitario graduado, enfocado en el desarrollo de
-                software robusto y aprendizaje continuo.
-              </p>
+              <h4 className="text-xl font-bold mb-3">Perfil Técnico</h4>
+              <div className="text-blue-100 text-sm mb-5 leading-relaxed space-y-1">
+                <p>🎓 Lic. en Producción de Bioimágenes</p>
+                <p className="text-blue-200 text-xs">
+                  Universidad Nacional de Córdoba
+                </p>
+                <div className="border-t border-blue-500 my-2" />
+                <p>🎓 Técnico Universitario en Programación</p>
+                <p className="text-blue-200 text-xs">UTN Mendoza</p>
+              </div>
               <motion.a
-                href="/cv.pdf"
+                href="/docs/cv_franco_garay.pdf"
                 download
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -244,7 +276,7 @@ export default function About() {
         </div>
 
         {/* 2. TIMELINE SIMPLIFICADA */}
-        <div className="mb-24">
+        <div className="mb-12">
           <h3 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-12">
             Mi Formación
           </h3>
@@ -264,7 +296,7 @@ export default function About() {
                     className="relative pb-8 pl-8"
                   >
                     <div
-                      className={`absolute -left-[9px] top-0 w-4 h-4 rounded-full border-2 bg-white dark:bg-gray-800 ${colors.border}`}
+                      className={`absolute -left-2.25 top-0 w-4 h-4 rounded-full border-2 bg-white dark:bg-gray-800 ${colors.border}`}
                     />
 
                     <div className="flex items-center gap-2 mb-1">
@@ -286,21 +318,40 @@ export default function About() {
                         onClick={() =>
                           handleCertificateDownload(
                             event.certificateUrl!,
-                            event.title
+                            event.title,
                           )
                         }
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         className={`text-xs px-3 py-1.5 rounded font-medium transition-colors ${colors.buttonLight}`}
                       >
-                        📋 Certificado
+                        {event.certificateUrl.endsWith(".pdf")
+                          ? "📊 Estado Académico"
+                          : "📋 Certificado"}
                       </motion.button>
                     )}
 
-                    {!event.certificateUrl && (
-                      <span className="text-xs text-gray-400 italic">
-                        En progreso
-                      </span>
+                    {!event.certificateUrl && event.status && (
+                      <div className="flex flex-col gap-1">
+                        <span className={`text-xs font-medium ${colors.text}`}>
+                          {event.status}
+                        </span>
+                        {event.certificateDownloadUrl && (
+                          <motion.button
+                            onClick={() =>
+                              handleCertificateDownload(
+                                event.certificateDownloadUrl!,
+                                event.title,
+                              )
+                            }
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className={`text-xs px-3 py-1.5 rounded font-medium transition-colors ${colors.buttonLight}`}
+                          >
+                            📋 Título
+                          </motion.button>
+                        )}
+                      </div>
                     )}
                   </motion.div>
                 );
@@ -323,7 +374,7 @@ export default function About() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
-                      className="relative flex flex-col items-center max-w-[180px]"
+                      className="relative flex flex-col items-center max-w-45"
                     >
                       <div
                         className={`w-5 h-5 rounded-full border-4 bg-white dark:bg-gray-800 mb-4 ${colors.border} ${event.featured ? "scale-125 z-10" : ""}`}
@@ -352,7 +403,7 @@ export default function About() {
                             onClick={() =>
                               handleCertificateDownload(
                                 event.certificateUrl!,
-                                event.title
+                                event.title,
                               )
                             }
                             whileHover={{ scale: 1.02 }}
@@ -360,13 +411,35 @@ export default function About() {
                             className={`w-full text-xs px-2 py-1.5 rounded font-medium transition-colors ${colors.button}`}
                           >
                             <Download size={12} className="inline mr-1" />
-                            Descargar
+                            {event.certificateUrl.endsWith(".pdf")
+                              ? "Ver Estado"
+                              : "Descargar"}
                           </motion.button>
                         )}
 
-                        {!event.certificateUrl && (
-                          <div className="text-xs text-gray-400 italic py-1.5">
-                            En proceso
+                        {!event.certificateUrl && event.status && (
+                          <div className="flex flex-col gap-1.5">
+                            <div
+                              className={`text-xs font-medium py-1 ${colors.text}`}
+                            >
+                              {event.status}
+                            </div>
+                            {event.certificateDownloadUrl && (
+                              <motion.button
+                                onClick={() =>
+                                  handleCertificateDownload(
+                                    event.certificateDownloadUrl!,
+                                    event.title,
+                                  )
+                                }
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                className={`w-full text-xs px-2 py-1.5 rounded font-medium transition-colors ${colors.button}`}
+                              >
+                                <Download size={12} className="inline mr-1" />
+                                Título
+                              </motion.button>
+                            )}
                           </div>
                         )}
                       </div>
@@ -379,7 +452,7 @@ export default function About() {
         </div>
 
         {/* 3. STACK TECNOLÓGICO */}
-        <div className="pt-10">
+        <div className="pt-2">
           <h3 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-12">
             Stack Tecnológico
           </h3>

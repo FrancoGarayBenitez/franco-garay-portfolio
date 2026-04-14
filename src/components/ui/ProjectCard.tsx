@@ -6,7 +6,6 @@ import Image from "next/image";
 import { Project } from "@/lib/types/global";
 import {
   Github,
-  ExternalLink,
   Play,
   X,
   Calendar,
@@ -15,6 +14,7 @@ import {
   Globe,
   ImageIcon,
   ZoomIn,
+  GraduationCap,
 } from "lucide-react";
 import ImageGallery from "./ImageGallery";
 
@@ -68,18 +68,18 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
       >
         {/* Imagen del proyecto */}
-        <div className="relative h-48 overflow-hidden">
+        <div className="relative h-56 overflow-hidden bg-gray-50 dark:bg-gray-900">
           {!imageError ? (
             <Image
               src={project.image}
               alt={project.title}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              className="object-contain p-3 group-hover:scale-105 transition-transform duration-300"
               onError={() => setImageError(true)}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-blue-100 to-purple-100 dark:from-gray-700 dark:to-gray-600 flex items-center justify-center">
+            <div className="w-full h-full bg-linear-to-br from-blue-100 to-purple-100 dark:from-gray-700 dark:to-gray-600 flex items-center justify-center">
               <div className="text-gray-400 text-center">
                 <Code size={48} className="mx-auto mb-2" />
                 <p className="text-sm font-medium">{project.title}</p>
@@ -126,8 +126,18 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             </span>
           </div>
 
-          {/* Badge Featured */}
-          {project.featured && (
+          {/* Badge especial (ej. Proyecto Final UTN) */}
+          {project.badge && (
+            <div className="absolute top-3 right-3">
+              <span className="flex items-center gap-1 bg-amber-500 text-white px-2 py-1 rounded-full text-xs font-bold shadow-md">
+                <GraduationCap size={12} />
+                {project.badge}
+              </span>
+            </div>
+          )}
+
+          {/* Badge Featured (solo si no hay badge especial) */}
+          {project.featured && !project.badge && (
             <div className="absolute top-3 right-3">
               <span className="bg-yellow-400 text-yellow-900 px-2 py-1 rounded-full text-xs font-bold">
                 ⭐ Destacado
@@ -158,13 +168,13 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             </div>
           </div>
 
-          <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
+          <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
             {project.description}
           </p>
 
           {/* Tecnologías */}
           <div className="flex flex-wrap gap-2 mb-4">
-            {project.technologies.slice(0, 4).map((tech) => (
+            {project.technologies.map((tech) => (
               <span
                 key={tech.name}
                 className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-md font-medium"
@@ -173,15 +183,10 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 {tech.name}
               </span>
             ))}
-            {project.technologies.length > 4 && (
-              <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 text-xs rounded-md">
-                +{project.technologies.length - 4} más
-              </span>
-            )}
           </div>
 
-          {/* Acciones */}
-          <div className="flex gap-3">
+          {/* Acciones: solo Repositorio y Video */}
+          <div className="flex gap-3 mt-auto pt-2">
             <motion.a
               href={project.githubUrl}
               target="_blank"
@@ -191,32 +196,18 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               className="flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors flex-1 justify-center text-sm font-medium"
             >
               <Github size={16} />
-              Código
+              Repositorio
             </motion.a>
-
-            {project.liveUrl && (
-              <motion.a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex-1 justify-center text-sm font-medium"
-              >
-                <ExternalLink size={16} />
-                Demo
-              </motion.a>
-            )}
 
             {project.demoVideoUrl && (
               <motion.button
                 onClick={() => setShowVideo(true)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm font-medium"
+                className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex-1 justify-center text-sm font-medium"
               >
                 <Play size={16} />
-                Video
+                Ver Demo
               </motion.button>
             )}
           </div>

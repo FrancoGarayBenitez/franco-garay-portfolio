@@ -13,6 +13,8 @@ export interface Project {
   githubUrl: string;
   liveUrl?: string;
   demoVideoUrl?: string;
+  demoVideoUrls?: string[];
+  badge?: string;
   featured: boolean;
   category: ProjectCategory;
   completionDate: string;
