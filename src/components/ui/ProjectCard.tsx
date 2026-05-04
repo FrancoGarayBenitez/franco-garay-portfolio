@@ -199,6 +199,20 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               Repositorio
             </motion.a>
 
+            {project.liveUrl && (
+              <motion.a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex-1 justify-center text-sm font-medium"
+              >
+                <Globe size={16} />
+                Ver en Vivo
+              </motion.a>
+            )}
+
             {project.demoVideoUrl && (
               <motion.button
                 onClick={() => setShowVideo(true)}
