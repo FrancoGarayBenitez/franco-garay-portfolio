@@ -10,7 +10,7 @@ export const env = {
   githubUrl:
     process.env.NEXT_PUBLIC_GITHUB_URL ||
     "https://github.com/FrancoGarayBenitez",
-  linkedinUrl: process.env.NEXT_PUBLIC_LINKEDIN_URL || "https://linkedin.com",
+  linkedinUrl: process.env.NEXT_PUBLIC_LINKEDIN_URL || "https://www.linkedin.com/in/franco-garay",
   formspreeId: process.env.NEXT_PUBLIC_FORMSPREE_ID || "",
   gaId: process.env.NEXT_PUBLIC_GA_ID,
 } as const;
