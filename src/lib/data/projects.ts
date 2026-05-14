@@ -38,7 +38,17 @@ export const projects: Project[] = [
       { name: "Tailwind CSS v4", color: "#06B6D4" },
       { name: "Recharts", color: "#22B5BF" },
     ],
-    githubUrl: "https://github.com/FrancoGarayBenitez/ElBuenSabor.git",
+    githubUrl: undefined,
+    repoUrls: [
+      {
+        label: "Frontend",
+        url: "https://github.com/FrancoGarayBenitez/buensabor-frontend.git",
+      },
+      {
+        label: "Backend",
+        url: "https://github.com/FrancoGarayBenitez/buensabor-backend.git",
+      },
+    ],
     liveUrl: undefined,
     demoVideoUrl: "/projects/buen_sabor/preview_cliente.mp4",
     demoVideoUrls: [

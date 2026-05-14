@@ -10,7 +10,8 @@ export interface Project {
     logo?: string;
   };
   technologies: Technology[];
-  githubUrl: string;
+  githubUrl?: string;
+  repoUrls?: { label: string; url: string }[];
   liveUrl?: string;
   demoVideoUrl?: string;
   demoVideoUrls?: string[];

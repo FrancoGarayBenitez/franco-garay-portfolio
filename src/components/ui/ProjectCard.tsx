@@ -30,6 +30,12 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
   const allImages = project.images?.screenshots || [];
   const hasMultipleImages = allImages.length > 0;
+  const repositoryLinks: { label: string; url: string }[] =
+    project.repoUrls && project.repoUrls.length > 0
+      ? project.repoUrls
+      : project.githubUrl
+        ? [{ label: "Repositorio", url: project.githubUrl }]
+        : [];
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
@@ -186,18 +192,21 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
 
           {/* Acciones: solo Repositorio y Video */}
-          <div className="flex gap-3 mt-auto pt-2">
-            <motion.a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors flex-1 justify-center text-sm font-medium"
-            >
-              <Github size={16} />
-              Repositorio
-            </motion.a>
+          <div className="flex flex-wrap gap-3 mt-auto pt-2">
+            {repositoryLinks.map((repo) => (
+              <motion.a
+                key={repo.url}
+                href={repo.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors text-sm font-medium"
+              >
+                <Github size={16} />
+                {repo.label}
+              </motion.a>
+            ))}
 
             {project.liveUrl && (
               <motion.a
@@ -206,7 +215,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex-1 justify-center text-sm font-medium"
+                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
               >
                 <Globe size={16} />
                 Ver en Vivo
@@ -218,7 +227,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 onClick={() => setShowVideo(true)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex-1 justify-center text-sm font-medium"
+                className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm font-medium"
               >
                 <Play size={16} />
                 Ver Demo
