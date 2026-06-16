@@ -149,7 +149,7 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/FrancoGarayBenitez/radiologia-next.git",
     liveUrl: "https://radiologia-next.vercel.app",
-    demoVideoUrl: "/projects/radiologia_mendoza/preview_radiologia.mp4",
+    demoVideoUrl: "/projects/radiologia_mendoza/demo_radiologia.mp4",
     featured: true,
     category: ProjectCategory.FULLSTACK,
     completionDate: "2026-04-06",
