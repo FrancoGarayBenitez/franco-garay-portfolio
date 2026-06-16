@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Franco Garay — Portfolio
 
-## Getting Started
+> Portfolio personal de Franco Garay, desarrollador Full Stack de Mendoza, Argentina.
 
-First, run the development server:
+## ✨ Características
+
+- Diseño responsive con Tailwind CSS v4
+- Modo oscuro/claro con next-themes
+- Animaciones con Framer Motion
+- Galería de imágenes con lightbox y zoom
+- Formulario de contacto vía Formspree
+- Navegación por scroll con secciones activas
+
+## 🛠️ Stack
+
+Next.js 16 · React 19 · TypeScript 5 · Tailwind CSS v4 · Framer Motion · lucide-react
+
+## 🚀 Inicio rápido
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrir [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📦 Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Comando | Descripción |
+|---|---|
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Build de producción |
+| `npm run start` | Servidor de producción |
+| `npm run lint` | ESLint |
 
-## Learn More
+## 🔐 Variables de entorno
 
-To learn more about Next.js, take a look at the following resources:
+Crear un archivo `.env.local` con las siguientes variables:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+NEXT_PUBLIC_FORMSPREE_ID=tu_form_id
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`NEXT_PUBLIC_FORMSPREE_ID` es requerida para el formulario de contacto. Ver `AGENTS.md` para la lista completa de variables.
 
-## Deploy on Vercel
+## 📁 Estructura
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+  app/          — Página principal y layout
+  components/   — Componentes React (sections/, ui/)
+  lib/          — Animaciones, datos, hooks, tipos, utilidades
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🌐 Deploy
+
+Optimizado para [Vercel](https://vercel.com). Build estándar con `next build`.
