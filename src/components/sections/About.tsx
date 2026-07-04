@@ -261,16 +261,28 @@ export default function About() {
                 <p>🎓 Técnico Universitario en Programación</p>
                 <p className="text-blue-200 text-xs">UTN Mendoza</p>
               </div>
-              <motion.a
-                href="/docs/cv_franco_garay.pdf"
-                download
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-blue-600 px-8 py-3 rounded-full font-bold text-sm shadow-md hover:bg-gray-100 transition-colors flex items-center gap-2"
-              >
-                <Download size={16} />
-                Descargar CV
-              </motion.a>
+              <div className="flex flex-col gap-2 w-full">
+                <motion.a
+                  href="/docs/CV_Franco_Garay_ES.pdf"
+                  download
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-white text-blue-600 px-8 py-3 rounded-full font-bold text-sm shadow-md hover:bg-gray-100 transition-colors flex items-center justify-center gap-2"
+                >
+                  <Download size={16} />
+                  CV Español
+                </motion.a>
+                <motion.a
+                  href="/docs/CV_Franco_Garay_EN.pdf"
+                  download
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-white text-blue-600 px-8 py-3 rounded-full font-bold text-sm shadow-md hover:bg-gray-100 transition-colors flex items-center justify-center gap-2"
+                >
+                  <Download size={16} />
+                  CV English
+                </motion.a>
+              </div>
             </motion.div>
           </div>
         </div>

@@ -46,15 +46,26 @@ export default function Hero() {
               >
                 Ver Proyectos
               </motion.button>
-              <motion.a
-                href="/docs/cv_franco_garay.pdf"
-                download
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="border border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 px-6 py-3 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-800 transition-colors text-center font-medium"
-              >
-                Descargar CV
-              </motion.a>
+              <div className="flex gap-3">
+                <motion.a
+                  href="/docs/CV_Franco_Garay_ES.pdf"
+                  download
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="border border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 px-6 py-3 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-800 transition-colors text-center font-medium"
+                >
+                  CV Español
+                </motion.a>
+                <motion.a
+                  href="/docs/CV_Franco_Garay_EN.pdf"
+                  download
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="border border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 px-6 py-3 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-800 transition-colors text-center font-medium"
+                >
+                  CV English
+                </motion.a>
+              </div>
             </div>
           </motion.div>
 
