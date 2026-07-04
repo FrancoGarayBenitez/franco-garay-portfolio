@@ -139,17 +139,6 @@ export default function Footer() {
             © {new Date().getFullYear()} Franco Garay. Todos los derechos
             reservados.
           </p>
-
-          <div className="flex items-center gap-1 text-gray-500 text-sm">
-            <span>Hecho con</span>
-            <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1, repeat: Infinity }}
-            >
-              <Heart size={14} className="text-red-500 fill-current" />
-            </motion.div>
-            <span>y Next.js</span>
-          </div>
         </motion.div>
       </div>
     </footer>
